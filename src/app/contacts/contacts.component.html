@@ -1,0 +1,12 @@
+<h2>{{title}}</h2>
+<ul class="items">
+  <li *ngFor="let contact of contacts | async"
+    [class.selected]="isSelected(contact)"
+    (click)="onSelect(contact)">
+    <span class="badge">{{ contact.id }}</span> {{ contact.name }}
+  </li>
+</ul>
+<button routerLink="/home">Go to home</button>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

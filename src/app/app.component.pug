@@ -1,0 +1,26 @@
+header
+  h1 {{title}}
+  nav.navbar.navbar-default
+    div.container
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(routerLink="home") Home
+        li(*ngIf="isLoggedIn")
+          a(routerLink="contacts") Contacts
+        li(*ngIf="isLoggedIn")
+          a(routerLink="cms") Dashboard
+        li
+          a(routerLink="about") About
+        li(*ngIf="!isLoggedIn")
+          a(routerLink="login", routerLinkActive="active") Login
+        li(*ngIf="isLoggedIn")
+          a((click)="logout()") Logout
+
+main
+  div.container
+    router-outlet
+    router-outlet(name="popup")
+
+footer
+  div.container
+    p {{clock | async}}
