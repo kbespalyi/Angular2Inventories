@@ -13,8 +13,11 @@ import 'rxjs/add/observable/interval';
 })
 
 export class AppComponent implements OnInit {
+
   title = 'Otolane Web Client';
   clock = Observable.interval(1000);
+
+  data: any; // initial application state
 
   constructor(
     private authService: AuthService,
@@ -26,7 +29,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.clock.subscribe(value => {
       const tick = value;
-
     });
   }
 

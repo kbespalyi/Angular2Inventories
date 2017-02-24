@@ -6,6 +6,8 @@ import { AboutComponent } from './about.component';
 import { ComposeMessageComponent } from './compose-message.component';
 import { AboutRoutingModule } from './about.routes';
 
+import { BoxComponent } from './box.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,7 +16,8 @@ import { AboutRoutingModule } from './about.routes';
   ],
   declarations: [
     AboutComponent,
-    ComposeMessageComponent
+    ComposeMessageComponent,
+    BoxComponent
   ],
   providers: []
 })
