@@ -20,16 +20,13 @@ export class LoginComponent implements OnInit {
    */
   login() {
     this.errorMessage = '';
-
     this.service.login(this.credentials.username, this.credentials.password)
       .subscribe(
         data => {
           this.router.navigate(['']);
-          console.log(data);
         },
         err => {
           this.errorMessage = err;
-          console.error(err);
         }
       );
   }

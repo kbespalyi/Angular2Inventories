@@ -15,6 +15,7 @@ import { CustomServicesModule } from './cms/custom-services.module';
 import { AboutModule } from './about/about.module';
 
 import { UserService } from './shared/services/user.service';
+import { AccountService } from './shared/services/account.service';
 
 import { ConfigService } from './shared/services/config.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
@@ -49,6 +50,7 @@ import 'rxjs/add/observable/throw';
     ConfigService,
     LocalStorageService,
     UserService,
+    AccountService,
     AuthService,
     AuthGuard,
     CanDeactivateGuard

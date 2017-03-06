@@ -1,0 +1,8 @@
+<div *ngIf="account">
+
+  <a [routerLink]="['/cms/accounts', account.id, 'edit']" class="btn btn-primary btn-sm">Edit</a>
+  <a (click)="deletAccount()" class="btn btn-danger btn-sm">Delete</a>
+
+  <h2>{{ account.dealerName }} <small>{{ account.dealerType }}</small></h2>
+
+</div>

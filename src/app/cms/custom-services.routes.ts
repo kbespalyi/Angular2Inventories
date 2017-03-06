@@ -12,6 +12,12 @@ import { UserSingleComponent } from './users/user-single/user-single.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountListComponent } from './accounts/account-list/account-list.component';
+import { AccountSingleComponent } from './accounts/account-single/account-single.component';
+import { AccountEditComponent } from './accounts/account-edit/account-edit.component';
+import { AccountCreateComponent } from './accounts/account-create/account-create.component';
+
 // Route Configuration
 export const customServicesRoutes: Routes = [{
   path: 'admin',
@@ -43,7 +49,30 @@ export const customServicesRoutes: Routes = [{
               component: UserEditComponent
             }
           ]
-        }
+        },
+        {
+          path: 'accounts',
+          canActivateChild: [AuthGuard],
+          component: AccountsComponent,
+          children: [
+            {
+              path: '',
+              component: AccountListComponent
+            },
+            {
+              path: 'create',
+              component: AccountCreateComponent
+            },
+            {
+              path: ':id',
+              component: AccountSingleComponent
+            },
+            {
+              path: ':id/edit',
+              component: AccountEditComponent
+            }
+          ]
+        }        
       ]
     },
   ]

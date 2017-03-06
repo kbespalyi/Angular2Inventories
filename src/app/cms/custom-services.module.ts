@@ -9,6 +9,13 @@ import { UserSingleComponent } from './users/user-single/user-single.component';
 import { UserEditComponent } from './users/user-edit/user-edit.component';
 import { UserCreateComponent } from './users/user-create/user-create.component';
 
+import { AccountService } from '../shared/services/account.service';
+import { AccountsComponent } from './accounts/accounts.component';
+import { AccountListComponent } from './accounts/account-list/account-list.component';
+import { AccountSingleComponent } from './accounts/account-single/account-single.component';
+import { AccountEditComponent } from './accounts/account-edit/account-edit.component';
+import { AccountCreateComponent } from './accounts/account-create/account-create.component';
+
 import { CustomServicesComponent } from './custom-services.component';
 import { CustomServicesRoutingModule } from './custom-services.routes';
 
@@ -20,13 +27,18 @@ import { CustomServicesRoutingModule } from './custom-services.routes';
   ],
   declarations: [
     CustomServicesComponent,
+    AccountsComponent,
+    AccountListComponent,
+    AccountSingleComponent,
+    AccountEditComponent,
+    AccountCreateComponent,
     UsersComponent,
     UserListComponent,
     UserSingleComponent,
     UserEditComponent,
     UserCreateComponent
   ],
-  providers: [ UserService ]
+  providers: [ UserService, AccountService ]
 })
 
 export class CustomServicesModule {}

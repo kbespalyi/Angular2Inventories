@@ -3,7 +3,7 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { ConfigService } from './config.service';
 import { LocalStorageService } from './local-storage.service';
-import { contentHeaders } from './headers';
+import { options } from './headers';
 
 @Injectable()
 export class AuthService {
@@ -31,12 +31,23 @@ export class AuthService {
     return auth.token;
   }
 
+  attachToken() {
+    // attaching a token
+    let token = this.getToken();
+    if (!options.headers.has('Authorization')) {
+      options.headers.append('Authorization', `${token}`);
+    } else {
+      options.headers.set('Authorization', `${token}`);
+    }
+    return options;
+  }
+
   /**
-   * Get expired date of token
+   * Get has expired date of token
    */
-  getExpiredDate() {
+  getIsExpiredToken() {
     const auth: any = this.localStorageService.getStoredAuth();
-    return +auth.expired || 0;
+    return (new Date().valueOf() > new Date(auth.expiredDate).valueOf());
   }
 
   /**
@@ -50,7 +61,7 @@ export class AuthService {
    * Check if the token is expired
    */
   tokenNotExpired() {
-    return this.isLoggedIn() && this.getExpiredDate() > new Date().valueOf();
+    return this.isLoggedIn() && !this.getIsExpiredToken();
   }
 
   /**
@@ -62,14 +73,14 @@ export class AuthService {
         email,
         password,
         include: 'user'
-      }, { headers: contentHeaders })
+      }, options)
       .map(res => res.json())
       .do(res => {
         if (res.id) {
           this.localStorageService.storeAuth({
             token: res.id,
             userId: res.userId,
-            expired: (new Date(new Date(res.created).valueOf() + res.ttl * 1000)).valueOf()
+            expiredDate: new Date(new Date(res.created).valueOf() + res.ttl * 1000).valueOf()
           });
           this.loggedIn = true;
         }
@@ -81,9 +92,8 @@ export class AuthService {
    * Log the user out
    */
   logout(): Observable<string> {
-    return this.http.get(`${this.authUrl}/logout`, { headers: contentHeaders })
+    return this.http.get(`${this.authUrl}/logout`, options)
       .map(res => {
-        console.dir('logout!!');
         return res.json();
       })
       .do(res => {

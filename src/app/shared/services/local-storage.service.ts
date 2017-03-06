@@ -9,7 +9,7 @@ export class LocalStorageService {
    * Get item by name
    */
   getItemByName(name: string) {
-    return !!localStorage.getItem(name);
+    return localStorage.getItem(name) || '';
   }
 
   /**
@@ -25,9 +25,9 @@ export class LocalStorageService {
    */
   getStoredAuth() {
     const auth = {
-      token: localStorage.getItem('auth_token') || null,
-      expired: localStorage.getItem('token_expired') || null,
-      userId: localStorage.getItem('userId') || null
+      token: this.getItemByName('auth_token') || null,
+      expiredDate: this.getItemByName('token_expired') || null,
+      userId: this.getItemByName('userId') || null
     };
     return auth;
   }
@@ -37,9 +37,9 @@ export class LocalStorageService {
    */
   storeAuth(auth) {
     this.destroyAuth();
-    if (auth.token) localStorage.setItem('auth_token', auth.token);
-    if (auth.expired > 0) localStorage.setItem('token_expired', auth.expired);
-    if (auth.userId) localStorage.setItem('userId', auth.userId);
+    if (auth.token) this.setItemByName('auth_token', auth.token);
+    if (auth.expiredDate > 0) this.setItemByName('token_expired', auth.expiredDate);
+    if (auth.userId) this.setItemByName('userId', auth.userId);
     return this;
   }
 

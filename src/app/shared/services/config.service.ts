@@ -7,6 +7,11 @@ export class ConfigService {
   private readonly apiUrl: string = 'http://localhost:3020/api/v2.0';
   private readonly authUrl: string = `${this.apiUrl}/users`;
   private readonly usersUrl: string = `${this.apiUrl}/Accounts/Users`;
+  private readonly accountsUrl: string = `${this.apiUrl}/Accounts`;
+  private readonly accountServicesUrl: string = `${this.apiUrl}/Accounts/services`;
+  private readonly vehiclesUrl: string = `${this.apiUrl}/Vehicles`;
+  private readonly auctionsUrl: string = `${this.apiUrl}/Auctions`;
+  private readonly bidsUrl: string = `${this.apiUrl}/Bids`;
 
   private readonly socketWS = 'ws://localhost:3020';
 
@@ -20,7 +25,13 @@ export class ConfigService {
       apiUrl: this.apiUrl,
       authUrl: this.authUrl,
       cms: {
-        usersUrl: this.usersUrl
+        usersUrl: this.usersUrl,
+        accountsUrl: this.accountsUrl
+      },
+      data: {
+        vehiclesUrl: this.vehiclesUrl,
+        auctionsUrl: this.auctionsUrl,
+        bidsUrl: this.bidsUrl
       },
       socketWS: this.socketWS
     };
@@ -29,7 +40,7 @@ export class ConfigService {
   /**
    * Handle any errors from the API
    */
-  private handleError(err) {
+  public handleError(err) {
     let errMessage: string;
 
     if (err instanceof Response) {
