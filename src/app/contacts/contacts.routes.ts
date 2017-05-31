@@ -8,7 +8,7 @@ import { ContactsComponent } from './contacts.component';
 import { ContactsDetailComponent } from './contacts-detail.component';
 
 // Route Configuration
-export const contactsRoutes: Routes = [{
+const contactsRoutes: Routes = [{
   path: 'contacts',
   children: [
     {
@@ -17,7 +17,7 @@ export const contactsRoutes: Routes = [{
       component: ContactsComponent,
       children: [
         {
-          path: 'contact/:id',
+          path: ':id',
           canActivateChild: [AuthGuard],
           component: ContactsDetailComponent
         }
@@ -28,7 +28,7 @@ export const contactsRoutes: Routes = [{
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(contactsRoutes)
+    RouterModule.forChild(contactsRoutes)
   ],
   exports: [
     RouterModule

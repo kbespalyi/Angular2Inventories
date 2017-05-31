@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { User } from '../models/user';
+import { Observable, Subject } from 'rxjs/Rx';
 import { ConfigService } from './config.service';
 import { AuthService } from './auth.service';
+import { User } from '../models/user';
 
 @Injectable()
 export class UserService {

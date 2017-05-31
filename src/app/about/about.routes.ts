@@ -22,7 +22,7 @@ const aboutRoutes: Routes = [{
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(aboutRoutes)
+    RouterModule.forChild(aboutRoutes)
   ],
   exports: [
     RouterModule

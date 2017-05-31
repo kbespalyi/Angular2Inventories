@@ -32,7 +32,7 @@ export class AccountSingleComponent implements OnInit {
       .subscribe(data => {
         console.log('account was deleted');
         // route back to the accounts page
-        this.router.navigate(['/cms/accounts']);
+        this.router.navigate(['/admin/accounts']);
       });
   }
 

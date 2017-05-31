@@ -5,6 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/index';
+import { WikiComponent } from './wiki/wiki.component';
+import { WikiSmartComponent } from './wiki/wiki-smart.component';
+
+import { AboutRoutingModule } from './about/index';
+import { ContactsRoutingModule } from './contacts/index';
+import { CustomServicesRoutingModule } from './cms/index';
 
 import { homeRoutes } from './home/index';
 
@@ -19,6 +25,10 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent
   },
+  {
+    path: 'wiki',
+    component: WikiSmartComponent
+  },
   ...homeRoutes,
   {
     path: '**',
@@ -28,7 +38,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AboutRoutingModule,
+    ContactsRoutingModule,
+    CustomServicesRoutingModule
   ],
   exports: [
     RouterModule
@@ -36,5 +49,3 @@ const routes: Routes = [
 })
 
 export class AppRoutingModule {}
-
-//export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

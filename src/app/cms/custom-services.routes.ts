@@ -19,7 +19,7 @@ import { AccountEditComponent } from './accounts/account-edit/account-edit.compo
 import { AccountCreateComponent } from './accounts/account-create/account-create.component';
 
 // Route Configuration
-export const customServicesRoutes: Routes = [{
+const customServicesRoutes: Routes = [{
   path: 'admin',
   children: [
     {

@@ -30,7 +30,7 @@ export class UserCreateComponent implements OnInit {
         console.log('user was created');
 
         // navigate back to the users page
-        this.router.navigate(['/cms/users']);
+        this.router.navigate(['/admin/users']);
       })
   }
 

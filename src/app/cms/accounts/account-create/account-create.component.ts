@@ -33,7 +33,7 @@ export class AccountCreateComponent implements OnInit {
         console.log('account was created');
 
         // navigate back to the accounts page
-        this.router.navigate(['/cms/accounts']);
+        this.router.navigate(['/admin/accounts']);
       })
   }
 

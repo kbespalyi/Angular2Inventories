@@ -1,0 +1,7 @@
+<p>Incoming Messages:</p>
+<div class="messages">
+  <p *ngFor="let msg of messages; let last = last"
+      [ngClass]="{ last: last }">
+    {{ msg.message }}
+  </p>
+</div>

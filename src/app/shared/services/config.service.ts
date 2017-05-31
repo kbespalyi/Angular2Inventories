@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ConfigService {
+  private readonly CHAT_URL: string = 'ws://localhost:3000/chat';
   private readonly apiUrl: string = 'http://localhost:3020/api/v2.0';
   private readonly authUrl: string = `${this.apiUrl}/users`;
   private readonly usersUrl: string = `${this.apiUrl}/Accounts/Users`;
@@ -13,7 +14,8 @@ export class ConfigService {
   private readonly auctionsUrl: string = `${this.apiUrl}/Auctions`;
   private readonly bidsUrl: string = `${this.apiUrl}/Bids`;
 
-  private readonly socketWS = 'ws://localhost:3020';
+  private readonly socketWS = 'ws://0.0.0.0:3020/socket.io';
+  private readonly socketWS_Chat = 'ws://localhost:3010';
 
   constructor(private http: Http) {}
 
@@ -33,7 +35,8 @@ export class ConfigService {
         auctionsUrl: this.auctionsUrl,
         bidsUrl: this.bidsUrl
       },
-      socketWS: this.socketWS
+      socketWS: this.socketWS,
+      socketWS_Chat: this.socketWS_Chat
     };
   }
 

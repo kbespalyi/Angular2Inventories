@@ -14,6 +14,7 @@ import { Component, OnInit, Input } from '@angular/core';
       strokeWidth="1"></svg:rect>
   `
 })
+
 export class BoxComponent {
   @Input() box;
   @Input() selected;

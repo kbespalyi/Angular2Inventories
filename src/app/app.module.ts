@@ -1,5 +1,5 @@
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -10,12 +10,17 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './page-not-found.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/index';
-import { ContactsModule } from './contacts/contacts.module';
-import { CustomServicesModule } from './cms/custom-services.module';
-import { AboutModule } from './about/about.module';
+import { WikiComponent } from './wiki/wiki.component';
+import { WikiSmartComponent } from './wiki/wiki-smart.component';
+
+import { ContactsModule } from './contacts/index';
+import { CustomServicesModule } from './cms/index';
+import { AboutModule } from './about/index';
+import { ChatModule } from './chat/index';
 
 import { UserService } from './shared/services/user.service';
 import { AccountService } from './shared/services/account.service';
+import { WebSocketService } from './shared/services/websocket.service';
 
 import { ConfigService } from './shared/services/config.service';
 import { LocalStorageService } from './shared/services/local-storage.service';
@@ -32,8 +37,10 @@ import 'rxjs/add/observable/throw';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     LoginComponent,
+    HomeComponent,
+    WikiComponent,
+    WikiSmartComponent,
     PageNotFoundComponent
   ],
   imports: [
@@ -41,19 +48,22 @@ import 'rxjs/add/observable/throw';
     FormsModule,
     HttpModule,
     JsonpModule,
+    AppRoutingModule,
     ContactsModule,
     CustomServicesModule,
     AboutModule,
-    AppRoutingModule
+    ChatModule
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     ConfigService,
     LocalStorageService,
+    WebSocketService,
     UserService,
     AccountService,
     AuthService,
     AuthGuard,
-    CanDeactivateGuard
+    CanDeactivateGuard,
   ],
   bootstrap: [AppComponent]
 })

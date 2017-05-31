@@ -1,14 +1,14 @@
 <div class="jumbotron text-center">
   <h1>Accounts</h1>
 
-  <a routerLink="/cms/accounts/create" class="btn btn-sm btn-info">Create Account</a>
+  <a routerLink="/admin/accounts/create" class="btn btn-sm btn-info">Create Account</a>
 </div>
 
 <div class="account-list row" *ngIf="accounts">
 
   <div class="col-sm-4" *ngFor="let account of accounts">
 
-    <div class="account-card text-center" [routerLink]="['/cms/accounts', account.id]">
+    <div class="account-card text-center" [routerLink]="['/admin/accounts', account.id]">
       <h2>{{ account.dealerName }} <small>{{ account.dealerType }}</small></h2>
     </div>
 

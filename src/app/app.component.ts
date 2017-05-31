@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   title = 'Otolane Web Client';
   clock = Observable.interval(1000);
 
-  data: any; // initial application state
+  private data: any; // initial application state
 
   constructor(
     private authService: AuthService,

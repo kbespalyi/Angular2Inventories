@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Contact } from '../shared/models/contact'
 import { ContactsService }  from './contacts.service';
+
 import 'rxjs/add/operator/switchMap';
 
 @Component({
@@ -41,6 +42,5 @@ export class ContactsComponent implements OnInit {
 
     // Navigate with relative link
     this.router.navigate([contact.id], { relativeTo: this.route });
-    //this.router.navigate(['/contacts/contact', contact.id]);
   }
 }

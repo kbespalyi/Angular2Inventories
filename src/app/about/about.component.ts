@@ -48,6 +48,7 @@ export class AboutComponent {
     const box = this.boxes[id];
     const mouseX = event.clientX;
     const mouseY = event.clientY;
+
     this.offsetX = box.x - mouseX;
     this.offsetY = box.y - mouseY;
     this.currentId = id;
